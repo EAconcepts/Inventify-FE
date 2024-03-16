@@ -21,9 +21,9 @@ const Signin = () => {
     password: "",
   });
 
-  const {setToken, setUser} = useAuth()
+  const { setToken, setUser } = useAuth();
   const apiUrl = import.meta.env.VITE_API_URL;
-  const navigateTo = useNavigate()
+  const navigateTo = useNavigate();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -35,16 +35,15 @@ const Signin = () => {
     onSuccess: (data) => {
       console.log(data);
       toast.success(data.data.message);
-      const token = data.data.token
-      const user = data.data.data
-      localStorage.setItem('token', token)
-      setToken(token)
-      localStorage.setItem('user',JSON.stringify(user))
-      setUser(user)
+      const token = data.data.token;
+      const user = data.data.data;
+      localStorage.setItem("token", token);
+      setToken(token);
+      localStorage.setItem("user", JSON.stringify(user));
+      setUser(user);
       setTimeout(() => {
-        navigateTo('/dashboard')
+        navigateTo("/dashboard");
       }, 1000);
-      
     },
     onError: (error) => {
       console.log(error);
@@ -54,7 +53,7 @@ const Signin = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(loginValues)
+    console.log(loginValues);
     if (!loginValues.email || !loginValues.password) {
       toast.error("Please enter email and password");
       return;
@@ -82,7 +81,7 @@ const Signin = () => {
             <RiUserLine className=" absolute top-[50%] translate-y-[-50%] left-[8px] " />
             <Input
               type="email"
-              name='email'
+              name="email"
               onChange={handleChange}
               placeholder="Email"
               className="pl-[24px]"
@@ -106,7 +105,9 @@ const Signin = () => {
             </div>
             <Link to="">Forgot Password?</Link>
           </div>
-          <Button className="mt-[12px] px-[32px]">Login</Button>
+          <Button className="mt-[12px] px-[32px]">
+            {handleLogin.isPending ? "Logging in..." : "Login"}
+          </Button>
           <div className=" w-full flex gap-x-[10px] items-center">
             <div className="w-full border h-0 "></div>
             <span>OR</span>
