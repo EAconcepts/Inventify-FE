@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
-import React, { ChangeEvent, useState } from "react";
+import  { ChangeEvent, useState } from "react";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { TbTrash } from "react-icons/tb";
 import iphoneBig from "../../assets/iphone-big.png";
@@ -25,6 +25,15 @@ export interface ProductProps {
   costPrice: string;
   description: string;
 }
+interface ProductErrors {
+  name?: string;
+  category?: string;
+  costPrice?: string;
+  quantity?: string;
+  noID?: string;
+  description?: string;
+  sellingPrice?: string;
+}
 const Addproduct = () => {
   const [product, setProduct] = useState<ProductProps>({
     name: "",
@@ -39,7 +48,7 @@ const Addproduct = () => {
     costPrice: "",
     description: "",
   });
-  const [errors, setErrors] = useState<ProductProps>();
+  const [errors, setErrors] = useState<ProductErrors>();
 
   const apiUrl = import.meta.env.VITE_API_URL;
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -70,7 +79,7 @@ const Addproduct = () => {
   });
 
   const validateInputs = () => {
-    const errors: ProductProps = {};
+    const errors: ProductErrors = {};
     if (!product.name) {
       errors.name = "Product name cannot be empty";
     }
@@ -103,6 +112,7 @@ const Addproduct = () => {
                 onChange={handleChange}
                 value={product.name}
               />
+              <p>{errors?.name}</p>
               <Input
                 placeholder="Select Product Category"
                 className="px-[12px] w-full"

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { IconType } from 'react-icons'
 import { CiHome } from 'react-icons/ci'
 import { LuBriefcase } from 'react-icons/lu'

@@ -1,4 +1,4 @@
-import React from "react";
+
 import avatar from "../../../assets/avatar.jpg";
 import { MdOutlineNotifications } from "react-icons/md";
 import { Input } from "@/components/ui/input";

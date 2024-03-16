@@ -1,4 +1,4 @@
-import React from "react";
+
 import { AreaChart, Card, DonutChart, LineChart } from "@tremor/react";
 
 const Charts = () => {

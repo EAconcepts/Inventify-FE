@@ -1,4 +1,3 @@
-import React from "react";
 import { FaGreaterThan } from "react-icons/fa";
 import avatar from "../../../assets/avatar.jpg";
 import { RxDownload } from "react-icons/rx";
